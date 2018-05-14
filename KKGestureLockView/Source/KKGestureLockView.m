@@ -194,14 +194,20 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
         }
     }
     
+//    for (UIButton *button in self.selectedButtons) {
+//        button.selected = NO;
+//    }
+//    [self.selectedButtons removeAllObjects];
+    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
+    [self setNeedsDisplay];
+}
+    
+- (void)resetToNormal {
     for (UIButton *button in self.selectedButtons) {
         button.selected = NO;
     }
     [self.selectedButtons removeAllObjects];
-    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
     [self setNeedsDisplay];
-    
-
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -216,16 +222,12 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
         }
     }
     
-    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
-   
-}
-    
-- (void)resetToNormal {
     for (UIButton *button in self.selectedButtons) {
         button.selected = NO;
     }
     [self.selectedButtons removeAllObjects];
-     [self setNeedsDisplay];
+    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
+    [self setNeedsDisplay];
 }
 
 #pragma mark -
