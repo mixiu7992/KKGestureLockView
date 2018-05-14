@@ -202,11 +202,23 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
     [self setNeedsDisplay];
 }
     
-- (void)resetToNormal {
+- (void)resetToNormal
+{
     for (UIButton *button in self.selectedButtons) {
         button.selected = NO;
     }
     [self.selectedButtons removeAllObjects];
+    [self setNeedsDisplay];
+}
+    
+- (void)updatePassCode:(NSString *)passcode
+{    
+    for (NSString *tag in [passcode componentsSeparatedByString:@","]) {
+        UIButton *button = [self viewWithTag:tag.integerValue];
+        if (button != nil) {
+            [self.selectedButtons addObject:button];
+        }
+    }
     [self setNeedsDisplay];
 }
 

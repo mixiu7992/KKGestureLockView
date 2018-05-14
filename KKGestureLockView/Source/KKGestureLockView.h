@@ -39,5 +39,7 @@
 @property (nonatomic, weak) id<KKGestureLockViewDelegate> delegate;
     
 - (void)resetToNormal;
+    
+- (void)updatePassCode:(NSString *)passcode;
 
 @end
