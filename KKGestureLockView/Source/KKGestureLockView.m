@@ -213,13 +213,13 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
     
 - (void)updatePassCode:(NSString *)passcode
 {
-    for (NSString *tag in [passcode componentsSeparatedByString:@","]) {
-        UIButton *button = [self.buttons objectAtIndex:tag.integerValue];
+//    for (NSString *tag in [passcode componentsSeparatedByString:@","]) {
+        UIButton *button = [self.buttons objectAtIndex:passcode.integerValue];
         if (button != nil) {
             button.selected = YES;
             [self.selectedButtons addObject:button];
         }
-    }
+//    }
     [self setNeedsDisplay];
 }
 
