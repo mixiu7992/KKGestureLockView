@@ -216,12 +216,16 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
         }
     }
     
+    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
+   
+}
+    
+- (void)resetToNormal {
     for (UIButton *button in self.selectedButtons) {
         button.selected = NO;
     }
     [self.selectedButtons removeAllObjects];
-    self.trackedLocationInContentView = CGPointMake(kTrackedLocationInvalidInContentView, kTrackedLocationInvalidInContentView);
-    [self setNeedsDisplay];
+     [self setNeedsDisplay];
 }
 
 #pragma mark -

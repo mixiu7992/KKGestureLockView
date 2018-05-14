@@ -35,7 +35,9 @@
 
 @property (nonatomic, strong, readonly) UIView *contentView;//the container of the gesture notes
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
-
+    
 @property (nonatomic, weak) id<KKGestureLockViewDelegate> delegate;
+    
+- (void)resetToNormal;
 
 @end
