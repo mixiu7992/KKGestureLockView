@@ -249,8 +249,8 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
     if (_normalGestureNodeImage != normalGestureNodeImage) {
         _normalGestureNodeImage = normalGestureNodeImage;
         CGSize buttonSize = self.buttonSize;
-        buttonSize.width = self.buttonSize.width > normalGestureNodeImage.size.width ? self.buttonSize.width : normalGestureNodeImage.size.width;
-        buttonSize.height = self.buttonSize.height > normalGestureNodeImage.size.height ? self.buttonSize.height : normalGestureNodeImage.size.height;
+        buttonSize.width = normalGestureNodeImage.size.width;
+        buttonSize.height = normalGestureNodeImage.size.height;
         self.buttonSize = buttonSize;
         
         if (self.buttons != nil && [self.buttons count] > 0) {
@@ -266,8 +266,8 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
         _selectedGestureNodeImage = selectedGestureNodeImage;
         
         CGSize buttonSize = self.buttonSize;
-        buttonSize.width = self.buttonSize.width > selectedGestureNodeImage.size.width ? self.buttonSize.width : selectedGestureNodeImage.size.width;
-        buttonSize.height = self.buttonSize.height > selectedGestureNodeImage.size.height ? self.buttonSize.height : selectedGestureNodeImage.size.height;
+        buttonSize.width = selectedGestureNodeImage.size.width;
+        buttonSize.height = selectedGestureNodeImage.size.height;
         self.buttonSize = buttonSize;
         
         if (self.buttons != nil && [self.buttons count] > 0) {
