@@ -40,6 +40,6 @@
     
 - (void)resetToNormal;
     
-- (void)updatePassCode:(NSString *)passcode;
+//- (void)updatePassCode:(NSString *)passcode;
 
 @end
