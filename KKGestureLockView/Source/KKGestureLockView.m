@@ -19,6 +19,7 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
 @interface KKGestureLockView (){
     struct {
         unsigned int didBeginWithPasscode :1;
+        unsigned int didChangeWithPasscode :1;
         unsigned int didEndWithPasscode : 1;
         unsigned int didCanceled : 1;
     } _delegateFlags;
@@ -176,6 +177,13 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
                     [self.delegate gestureLockView:self didBeginWithPasscode:[NSString stringWithFormat:@"%d",touchedButton.tag]];
                 }
             }
+            if (_delegateFlags.didChangeWithPasscode) {
+                NSMutableArray *passcodeArray = [NSMutableArray array];
+                for (UIButton *button in self.selectedButtons) {
+                    [passcodeArray addObject:[NSString stringWithFormat:@"%d",button.tag]];
+                }
+                [self.delegate gestureLockView:self didChangeWithPasscode:[passcodeArray componentsJoinedByString:@","]];
+            }
         }
         self.trackedLocationInContentView = locationInContentView;
         [self setNeedsDisplay];
@@ -282,6 +290,7 @@ const static CGFloat kTrackedLocationInvalidInContentView = -1.0;
     _delegate = delegate;
     
     _delegateFlags.didBeginWithPasscode = [delegate respondsToSelector:@selector(gestureLockView:didBeginWithPasscode:)];
+    _delegateFlags.didChangeWithPasscode = [delegate respondsToSelector:@selector(gestureLockView:didChangeWithPasscode:)];
     _delegateFlags.didEndWithPasscode = [delegate respondsToSelector:@selector(gestureLockView:didEndWithPasscode:)];
     _delegateFlags.didCanceled = [delegate respondsToSelector:@selector(gestureLockViewCanceled:)];
 }

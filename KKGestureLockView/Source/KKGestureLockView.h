@@ -13,6 +13,8 @@
 @protocol KKGestureLockViewDelegate <NSObject>
 @optional
 - (void)gestureLockView:(KKGestureLockView *)gestureLockView didBeginWithPasscode:(NSString *)passcode;
+    
+- (void)gestureLockView:(KKGestureLockView *)gestureLockView didChangeWithPasscode:(NSString *)passcode;
 
 - (void)gestureLockView:(KKGestureLockView *)gestureLockView didEndWithPasscode:(NSString *)passcode;
 
